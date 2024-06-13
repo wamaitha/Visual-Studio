@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Song</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 8px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        #movingText {
+            font-size: 24px;
+            color: #ff4500;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        footer {
+            padding: 10px;
+            text-align: center;
+            background-color: #333;
+            color: white;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Favorite Song</h1>
+    </header>
+    <div class="content">
+        <iframe src="https://www.youtube.com/embed/JrNMyzsYr4M" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div id="movingText">This text moves left and right!</div>
+    </div>
+    <footer>
+        &copy; 2024 My Music Website
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const movingText = document.getElementById('movingText');
+            let direction = 1;
+
+            function animate() {
+                let left = parseInt(movingText.style.left, 10);
+                if (left >= 300 || left <= 0) {
+                    direction *= -1;
+                }
+                movingText.style.left = (left + direction) + 'px';
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        });
+    </script>
+</body>
+</html>
